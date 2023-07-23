@@ -17,7 +17,7 @@ public class CounterController {
     ){
         log.trace("Initiated the Counter Controller.");
         log.debug("CounterValue = " + counterValue);
-        System.out.println("print");
+        System.out.println("Logging..");
         return new ModelAndView("index");
     }
 
