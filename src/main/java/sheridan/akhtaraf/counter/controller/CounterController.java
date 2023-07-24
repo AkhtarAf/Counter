@@ -11,14 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class CounterController {
 
     private final Logger log = LoggerFactory.getLogger(CounterController.class);
+
+    // For controlling the Counter Input
     @GetMapping("/")
-    public ModelAndView counterHome(
-            @RequestParam(defaultValue = "0") int counterValue
-    ){
-        log.trace("Initiated the Counter Controller.");
-        log.debug("CounterValue = " + counterValue);
-        System.out.println("Logging..");
+    public ModelAndView counterHome() {
+        log.trace("Showing the Index Page...");
         return new ModelAndView("index");
     }
 
+    // Get mapping for the output page with request parameter `counterValue`
+    @GetMapping("/counter")
+    public ModelAndView counterPage(
+            @RequestParam(defaultValue = "0") int counterValue
+    ){
+        log.trace("At the output counter page");
+        log.debug("counterValue = " + counterValue);
+        return new ModelAndView("counter","counterData", counterValue);
+    }
 }
